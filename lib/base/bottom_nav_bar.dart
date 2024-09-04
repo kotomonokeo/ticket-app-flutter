@@ -12,15 +12,18 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final appScreens = [
     const Text("Home"),
     const Text("Search"),
-    const Text("Ticket"),
+    const Text("Tickets"),
     const Text("Profile"),
   ];
 
   // change our index for BottomNavBar
   int _selectedIndex = 0;
-  void _onItemTapped(int index){
-    _selectedIndex = index;
-    print("tap index $_selectedIndex");
+  void _onItemTapped(int index) {
+    setState(() {
+      {
+        _selectedIndex = index;
+      }
+    });
   }
 
   @override
@@ -34,6 +37,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ),
       body: Center(child: appScreens[_selectedIndex]),
       bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           selectedItemColor: Colors.blue,
           unselectedItemColor: const Color(0xFF526400),
@@ -50,7 +54,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             BottomNavigationBarItem(
                 icon: Icon(FluentSystemIcons.ic_fluent_ticket_regular),
                 activeIcon: Icon(FluentSystemIcons.ic_fluent_ticket_filled),
-                label: 'Ticket'),
+                label: 'Tickets'),
             BottomNavigationBarItem(
                 icon: Icon(FluentSystemIcons.ic_fluent_person_regular),
                 activeIcon: Icon(FluentSystemIcons.ic_fluent_person_filled),
